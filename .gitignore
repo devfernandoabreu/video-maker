@@ -109,6 +109,13 @@ credentials/*.json
 # content
 content.json
 
-#imagens
+#images
 content/*.png
 content/*.jpg
+content/*.js
+content/*.mov
+
+#template video
+Adobe After Effects Auto-Save
+template.aep Logs
+.DS_Store
