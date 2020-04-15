@@ -156,7 +156,7 @@ async function robot() {
         }
 
         const youtubeResponse = await youtube.thumbnails.set(requestParameters);
-        console.log(`> Thumnail uploaded!`);
+        console.log(`> Thumnail uploaded`);
     }
 
 
