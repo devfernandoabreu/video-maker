@@ -5,6 +5,7 @@ const path = require('path');
 const rootPath = path.resolve(__dirname, '..');
 
 async function robot() {
+    console.log('> [video-robot] Starting...');
     const content = state.load();
 
     await convertAllImages(content);
@@ -129,7 +130,7 @@ async function robot() {
                         return reject(error);
                     }
 
-                    console.log('> Creating YouTube thumbnail');
+                    console.log('> [video-robot] YouTube thumbnail created');
                     resolve();
                 })
         })
@@ -141,16 +142,16 @@ async function robot() {
 
     async function renderVideoWithAfterEffects() {
         return new Promise((resolve, reject) => {
-            const aerenderFilePath = '/Applications/Adobe After Effects CC 2019/aerender';
-            const templateFilePath = `${rootPath}/template/1/template.aep`;
+            const aerenderFilePath = 'C:\\Program Files\\Adobe\\Adobe After Effects 2020\\Support Files\\aerender.exe';
+            const templateFilePath = `C:\\xampp2\\htdocs\\video-maker\\templates\\1\\template.aep`;
             const destinationFilePath = `${rootPath}/content/output.mov`;
 
-            console.log('> Starting After Effects');
+            console.log('>[video-robot] Starting After Effects');
 
             const aerender = spawn(aerenderFilePath, [
                 '-comp', 'main',
                 '-project', templateFilePath,
-                '-ouput', destinationFilePath
+                '-output', destinationFilePath
             ]);
 
             aerender.stdout.on('data', (data) => {
@@ -158,7 +159,7 @@ async function robot() {
             });
 
             aerender.on('close', () => {
-                console.log('> After Effects closed');
+                console.log('>[video-robot] After Effects closed');
                 resolve();
             });
 
